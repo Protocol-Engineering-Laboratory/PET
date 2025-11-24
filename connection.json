@@ -1,0 +1,52 @@
+{
+    "name": "fabric-network",
+    "version": "1.0",
+    "client": {
+      "organization": "Org1",
+      "connection": {
+        "timeout": {
+          "peer": {
+            "endorser": "30000"
+          }
+        }
+      }
+    },
+    "channels": {
+      "mychannel": {
+        "orderers": ["orderer.example.com"],
+        "peers": {
+          "peer0.org1.example.com": {
+            "endorsingPeer": true,
+            "chaincodeQuery": true,
+            "eventSource": true
+          }
+        }
+      }
+    },
+    "organizations": {
+      "Org1": {
+        "mspid": "Org1MSP",
+        "peers": ["peer0.org1.example.com"],
+        "certificateAuthorities": ["ca.org1.example.com"]
+      }
+    },
+    "orderers": {
+      "orderer.example.com": {
+        "url": "grpcs://192.168.229.132:7050",
+        "tlsCACerts": {
+         "path": "./organizations/combined-ca.crt"
+        }
+      }
+    },
+    "peers": {
+      "peer0.org1.example.com": {
+        "url": "grpcs://192.168.229.132:7051",
+        "tlsCACerts": {
+         "path": "./organizations/combined-ca.crt"
+        }
+      }
+    }
+
+  }
+  
+  
